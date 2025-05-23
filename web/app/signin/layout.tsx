@@ -1,4 +1,4 @@
-// import Header from './_header'
+import Header from './_header'
 import style from './page.module.css'
 
 import cn from '@/utils/classnames'
@@ -18,7 +18,9 @@ export default async function SignInLayout({ children }: { children: React.React
                 'space-between',
                 )
             }>
-                {/* <Header /> */}
+                <div className='px-4 py-6'>
+                    <Header />
+                </div>
                 <div className={
                     cn(
                         'flex flex-col items-center w-full grow justify-center',

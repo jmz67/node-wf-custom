@@ -5,7 +5,7 @@ import LogoSite from '@/components/base/logo/logo-site'
 const Header = () => {
 
     return <div>
-        <LogoSite />
+        <LogoSite size='large' />
     </div>
 }
 
