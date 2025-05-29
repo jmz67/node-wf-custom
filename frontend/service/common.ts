@@ -1,7 +1,7 @@
 import type { Fetcher } from 'swr'
 import { post } from './base'
 
-
+import type { UserProfileOriginResponse } from '@/models/common'
 
 type LoginSuccess = {
   result: 'success'
@@ -22,3 +22,10 @@ export const login: Fetcher<LoginResponse, { url: string; body: Record<string, a
 ) => {
     return post(url, { body }) as Promise<LoginResponse>
 }
+
+export const fetchUserProfile: Fetcher<UserProfileOriginResponse, { url: string; params: Record<string, any> }> = ({
+  url, params
+}) => {
+  return get<UserProfileOriginResponse>(url, params, { needAllResponseContent: true }) 
+}
+

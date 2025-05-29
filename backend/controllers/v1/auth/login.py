@@ -1,7 +1,9 @@
 import logging
+from typing import Annotated
 
 from fastapi import APIRouter, Request
 from dependencies.setup_guards import SelfHostedSetupGuard
+from dependencies.auth import get_current_user 
 from services.tenant_service import TenantService, RegisterService
 from utils import extract_remote_ip
 
@@ -13,7 +15,7 @@ router = APIRouter()
 async def signup(
     tenant_in: TenantCreate,
     request: Request,
-    _: SelfHostedSetupGuard  # 👈 注入组合校验逻辑
+    _: SelfHostedSetupGuard  
 ):
     # 检查已有租户
     if TenantService.get_tenant_count() > 0:
@@ -28,4 +30,9 @@ async def signup(
     )
 
     return {"result": "success"}
+
+@router.get("/logout")
+async logout(
+    current_user: Annotated[Account, Depends(get_current_user)]
+):
     
