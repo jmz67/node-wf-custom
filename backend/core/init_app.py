@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from configs import app_config
 from controllers import api_router 
 
+from log import logger 
+
 
 
 def register_routers(app: FastAPI, prefix: str = "/api"):

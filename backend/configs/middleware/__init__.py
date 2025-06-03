@@ -17,11 +17,6 @@ class DatabaseConfig(BaseSettings):
     DB_PASSWORD: str = "password"
     DB_NAME: str = "app"
 
-    model_config = {
-        "env_file": ".env",
-        "env_file_encoding": "utf-8",
-    }
-
     ENGINE_MAP = {
         "sqlite": "tortoise.backends.sqlite",
         "mysql": "tortoise.backends.mysql",
